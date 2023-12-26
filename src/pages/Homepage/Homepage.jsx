@@ -1,6 +1,6 @@
 import React, { useDebugValue, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
+
 
 export default function Homepage() {
    //http isteği
@@ -14,7 +14,7 @@ export default function Homepage() {
       //     .catch(err => {console.log(err)});
 
       //awaitFatch();
-      axiosGet();
+      //axiosGet();
    },[]);
 
    const awaitFatch = async () => {
@@ -24,22 +24,12 @@ export default function Homepage() {
    };
 
 
-   const axiosGet = async () => {
-    let response = await axios.get("https://dummyjson.com/products")
-    console.log(response.data);
-   }
+
 
 
 
   return (
     <div>
-      Homepage sayfası
-      <br/>
-      {/*SPA'larda href attribute'u kullanımı yanlıştır */}
-      <a href="/products">Ürünler sayfası</a>
-
-      <br />
-
       <Link to={"/products"}>Ürünler sayfası</Link>
       </div>
   )
