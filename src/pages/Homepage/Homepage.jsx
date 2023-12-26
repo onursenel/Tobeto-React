@@ -1,5 +1,6 @@
 import React, { useDebugValue, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 export default function Homepage() {
    //http isteği
@@ -12,7 +13,8 @@ export default function Homepage() {
       //     .then(json => {console.log(json)})
       //     .catch(err => {console.log(err)});
 
-      awaitFatch();
+      //awaitFatch();
+      axiosGet();
    },[]);
 
    const awaitFatch = async () => {
@@ -20,6 +22,12 @@ export default function Homepage() {
       let json =await response.json();
       console.log(json);
    };
+
+
+   const axiosGet = async () => {
+    let response = await axios.get("https://dummyjson.com/products")
+    console.log(response.data);
+   }
 
 
 
