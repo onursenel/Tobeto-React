@@ -2,54 +2,32 @@ import React, { useDebugValue, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Homepage() {
+   //http isteği
 
-  const myAsyncFunciton = () => {
-    return new Promise((resolve,reject)=>{
-      //async işlem
-      setTimeout(()=>{
-        //resolve("veri örneği"); // işlemin başarılı olması
-        reject("istek başarısız");// işlemin başarısız olması
-      },3000)
-    });
-  }
 
   useEffect(() => {
-    //thenCatchFinally();
-    asyncAwait();
-    
-  },[]);
+    //gelen veriyi json olarak console'a yazdır.
+      // fetch("https://dummyjson.com/products")
+      //     .then(response => response.json())
+      //     .then(json => {console.log(json)})
+      //     .catch(err => {console.log(err)});
 
-  const asyncAwait =async ()=> {
-    try{
-      let response = await myAsyncFunciton();
-      console.log(response);
+      awaitFatch();
+   },[]);
 
-    }catch(e)
-    {
-      console.log(e)
-    }
- 
-  }
+   const awaitFatch = async () => {
+      let response =await fetch ("https://dummyjson.com/products")
+      let json =await response.json();
+      console.log(json);
+   };
 
-  const thenCatchFinally = () => {
-
-    myAsyncFunciton()
-    .then(response => {console.log("bir cevap geldi ", response)})
-    .catch(err => {console.log("bir hata geldi", err)})
-    .finally(() => {console.log("Async işlem sonlandı")});
-
-  }
-
-  //JS ASYNC
-  //Built-in Promise
-  
 
 
   return (
     <div>
       Homepage sayfası
       <br/>
-
+      {/*SPA'larda href attribute'u kullanımı yanlıştır */}
       <a href="/products">Ürünler sayfası</a>
 
       <br />
